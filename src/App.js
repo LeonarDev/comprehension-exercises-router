@@ -4,6 +4,7 @@ import Home from './components/Home';
 import About from './components/About';
 import Users from './components/Users';
 import StrictAccess from './StrictAccess';
+import NotFound from './components/NotFound';
 
 class App extends Component {
   render() {
@@ -21,8 +22,9 @@ class App extends Component {
         <Switch>
           <Route path="/users/:id" render={(props) => <Users {...props} greetingMessage="Good Morning" />} />
           <Route path="/strict-access" render={ () => ( <StrictAccess user={ { username: 'joao', password: '1234' } } />)} />
-          <Route path="/about" component={About} />
-          <Route path="/" component={Home} />
+          <Route path="/about" component={ About } />
+          <Route exact path="/" component={ Home } />
+          <Route path="*" component={ NotFound } />
         </Switch>
       </BrowserRouter>
     );
